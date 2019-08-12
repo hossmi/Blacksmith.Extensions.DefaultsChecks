@@ -1,8 +1,6 @@
-﻿using System;
-using System.IO;
-using Everis.ToolBox;
+﻿using System.IO;
 
-namespace Everis.ToolBox.Extensions.Streams
+namespace blaxpro.Tools.Extensions.Streams
 {
     public static class StreamsExtensions
     {

@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using blaxpro.Tools.Exceptions;
+using Blaxpro.Validations;
 
-namespace Everis.ToolBox.Extensions.Randoms
+namespace blaxpro.Tools.Extensions.Randoms
 {
     public static class RandomExtensions
     {
         private static Random random;
+        private static readonly IValidatorStrings strings;
+        private static readonly Validator<RandomExtensionsException> validate;
 
         static RandomExtensions()
         {
             random = new Random(DateTime.UtcNow.Millisecond);
+            strings = new EnValidatorStrings();
+            validate = new Validator<RandomExtensionsException>(strings, prv_buildException);
         }
 
         public static Random Instance
@@ -20,16 +26,22 @@ namespace Everis.ToolBox.Extensions.Randoms
             }
             set
             {
-                random = value ?? throw new ArgumentNullException(nameof(value));
+                validate.isNotNull(value);
+                random = value;
             }
         }
 
         public static DateTime getDateBetween(this Random random, DateTime from, DateTime to)
         {
-            TimeSpan diference = to - from;
-            int days = (int)diference.TotalDays;
-            int randomDays = random.Next(days);
-            DateTime result = from.AddDays(randomDays);
+            DateTime result;
+            TimeSpan diference;
+            int days, randomDays;
+
+            diference = to - from;
+            days = (int)diference.TotalDays;
+            randomDays = random.Next(days);
+            result = from.AddDays(randomDays);
+
             return result;
         }
 
@@ -112,8 +124,7 @@ namespace Everis.ToolBox.Extensions.Randoms
             int index;
             T item;
 
-            if (items.Count <= 0)
-                throw new ArgumentOutOfRangeException(nameof(items));
+            validate.isTrue(0 < items.Count, string.Format(strings.Out_of_Range_value_for_0, nameof(items)));
 
             index = random.Next(0, items.Count);
             item = items[index];
@@ -127,8 +138,7 @@ namespace Everis.ToolBox.Extensions.Randoms
             int index;
             T item;
 
-            if (items.Count <= 0)
-                throw new ArgumentOutOfRangeException(nameof(items));
+            validate.isTrue(0 < items.Count, string.Format(strings.Out_of_Range_value_for_0, nameof(items)));
 
             index = Instance.Next(0, items.Count);
             item = items[index];
@@ -139,13 +149,16 @@ namespace Everis.ToolBox.Extensions.Randoms
 
         private static bool prv_nextBool(Random random, double truePercentage)
         {
-            if (random == null)
-                throw new ArgumentNullException(nameof(random));
-
-            if (truePercentage < 0.0 || 1.0 < truePercentage)
-                throw new ArgumentNullException(nameof(truePercentage));
+            validate.isNotNull(random);
+            validate.isTrue(0.0 <= truePercentage && truePercentage <= 1.0
+                , string.Format(strings.Out_of_Range_value_for_0, nameof(truePercentage)));
 
             return random.NextDouble() <= truePercentage;
+        }
+
+        private static RandomExtensionsException prv_buildException(string message)
+        {
+            return new RandomExtensionsException(message);
         }
     }
 }

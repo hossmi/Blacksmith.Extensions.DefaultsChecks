@@ -2,9 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using Everis.ToolBox.Extensions.Strings;
+using blaxpro.Tools.Extensions.Strings;
 
 namespace Everis.ToolBox.Extensions.Queryables
 {

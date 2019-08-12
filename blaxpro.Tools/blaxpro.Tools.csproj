@@ -4,16 +4,17 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+    <AssemblyVersion>0.0.3.0</AssemblyVersion>
   </PropertyGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="xcopy &quot;$(TargetDir)..\$(TargetName).*.nupkg&quot; &quot;%public%\nuget-repo\&quot; /Y" />
   </Target>
+
+  <ItemGroup>
+    <PackageReference Include="Blaxpro.Validations" Version="1.1.0" />
+  </ItemGroup>
 
 </Project>

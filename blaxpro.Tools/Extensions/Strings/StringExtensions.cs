@@ -1,7 +1,5 @@
-﻿using System;
-using Everis.ToolBox;
-
-namespace Everis.ToolBox.Extensions.Strings
+﻿
+namespace blaxpro.Tools.Extensions.Strings
 {
     public static class StringExtensions
     {
