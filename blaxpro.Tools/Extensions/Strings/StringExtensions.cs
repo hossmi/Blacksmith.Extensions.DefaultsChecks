@@ -1,5 +1,5 @@
 ﻿
-namespace blaxpro.Tools.Extensions.Strings
+namespace Blaxpro.Tools.Extensions.Strings
 {
     public static class StringExtensions
     {

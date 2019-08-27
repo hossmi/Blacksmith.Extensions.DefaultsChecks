@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace blaxpro.Tools.Extensions.Streams
+namespace Blaxpro.Tools.Extensions.Streams
 {
     public static class StreamsExtensions
     {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using blaxpro.Tools.Extensions.Strings;
+using Blaxpro.Tools.Extensions.Strings;
 
-namespace Everis.ToolBox.Extensions.Queryables
+namespace Blaxpro.Tools.Extensions.Queryables
 {
     public static class QueryableExtensions
     {
@@ -32,6 +32,64 @@ namespace Everis.ToolBox.Extensions.Queryables
         public static IEnumerable<T> whereIfStringIsFilled<T>(this IEnumerable<T> items, string text, Func<T, bool> predicate)
         {
             return whereIf<T>(items, text.isFilled(), predicate);
+        }
+
+        public static T single<T, TException>(this IEnumerable<T> items
+            , Func<T, bool> predicate
+            , Func<InvalidOperationException, TException> wrapException)
+            where TException: Exception
+        {
+            try
+            {
+                return items.Single<T>(predicate);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw wrapException(ex);
+            }
+        }
+
+        public static T single<T, TException>(this IEnumerable<T> items
+            , Func<InvalidOperationException, TException> wrapException)
+            where TException : Exception
+        {
+            try
+            {
+                return items.Single<T>();
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw wrapException(ex);
+            }
+        }
+
+        public static T singleOrDefault<T, TException>(this IEnumerable<T> items
+            , Func<T, bool> predicate
+            , Func<InvalidOperationException, TException> wrapException)
+            where TException : Exception
+        {
+            try
+            {
+                return items.SingleOrDefault<T>(predicate);
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw wrapException(ex);
+            }
+        }
+
+        public static T singleOrDefault<T, TException>(this IEnumerable<T> items
+            , Func<InvalidOperationException, TException> wrapException)
+            where TException : Exception
+        {
+            try
+            {
+                return items.SingleOrDefault<T>();
+            }
+            catch (InvalidOperationException ex)
+            {
+                throw wrapException(ex);
+            }
         }
     }
 }
