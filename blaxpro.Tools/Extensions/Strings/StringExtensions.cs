@@ -12,5 +12,10 @@ namespace Blaxpro.Tools.Extensions.Strings
         {
             return string.IsNullOrWhiteSpace(text);
         }
+
+        public static string f(this string format, params object[] args)
+        {
+            return string.Format(format, args);
+        }
     }
 }
