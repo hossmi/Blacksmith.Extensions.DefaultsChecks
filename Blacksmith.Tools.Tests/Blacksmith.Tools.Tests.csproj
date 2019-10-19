@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\blaxpro.Tools\Blaxpro.Tools.csproj" />
+    <ProjectReference Include="..\Blacksmith.Tools\Blacksmith.Tools.csproj" />
   </ItemGroup>
 
 </Project>

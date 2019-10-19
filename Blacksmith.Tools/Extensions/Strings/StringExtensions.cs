@@ -1,5 +1,5 @@
 ﻿
-namespace Blaxpro.Tools.Extensions.Strings
+namespace Blacksmith.Tools.Extensions.Strings
 {
     public static class StringExtensions
     {

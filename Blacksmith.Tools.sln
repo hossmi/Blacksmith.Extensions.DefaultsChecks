@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blaxpro.Tools", "blaxpro.Tools\Blaxpro.Tools.csproj", "{57DCE3C6-5F67-4061-95D6-79A3EB51A2DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blacksmith.Tools", "Blacksmith.Tools\Blacksmith.Tools.csproj", "{57DCE3C6-5F67-4061-95D6-79A3EB51A2DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blaxpro.Tools.Tests", "blaxpro.Tools.Tests\blaxpro.Tools.Tests.csproj", "{A8135D51-78A7-41E6-BC6D-971C14DB9447}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blacksmith.Tools.Tests", "Blacksmith.Tools.Tests\Blacksmith.Tools.Tests.csproj", "{A8135D51-78A7-41E6-BC6D-971C14DB9447}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
