@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Blaxpro.Tools.Extensions.Strings;
+using Blacksmith.Tools.Extensions.Strings;
 
-namespace Blaxpro.Tools.Extensions.Queryables
+namespace Blacksmith.Tools.Extensions.Queryables
 {
     public static class QueryableExtensions
     {

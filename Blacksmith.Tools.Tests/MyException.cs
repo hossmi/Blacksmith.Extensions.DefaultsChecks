@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Blaxpro.Tools.Tests
+namespace Blacksmith.Tools.Tests
 {
     public class MyException : Exception
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Blaxpro.Tools.Exceptions
+namespace Blacksmith.Tools.Exceptions
 {
     public class RandomExtensionsException : Exception
     {

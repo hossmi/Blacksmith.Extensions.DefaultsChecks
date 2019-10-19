@@ -1,8 +1,8 @@
 using System.Linq;
 using Xunit;
-using Blaxpro.Tools.Extensions.Queryables;
+using Blacksmith.Tools.Extensions.Queryables;
 
-namespace Blaxpro.Tools.Tests
+namespace Blacksmith.Tools.Tests
 {
     public class LinqTests
     {

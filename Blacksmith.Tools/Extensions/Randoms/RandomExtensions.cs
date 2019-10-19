@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Blaxpro.Tools.Exceptions;
-using Blaxpro.Validations;
+using Blacksmith.Tools.Exceptions;
+using Blacksmith.Validations;
 
-namespace Blaxpro.Tools.Extensions.Randoms
+namespace Blacksmith.Tools.Extensions.Randoms
 {
     public static class RandomExtensions
     {
