@@ -1,4 +1,4 @@
-﻿using Blacksmith.Extensions.Strings;
+﻿using Blacksmith.Tools.Extensions.Strings;
 using System;
 using System.Runtime.Serialization;
 
@@ -9,7 +9,7 @@ namespace Blacksmith.Models
         public BusinessException(string message) : base(message)
         {
         }
-        public BusinessException(string message, params object[] args) : base(message.format(args))
+        public BusinessException(string message, params object[] args) : base(message.f(args))
         {
         }
 

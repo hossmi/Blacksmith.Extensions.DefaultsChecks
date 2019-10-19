@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Blacksmith.Validations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Blacksmith;
 
 namespace Blacksmith.Models
 {
@@ -11,7 +11,7 @@ namespace Blacksmith.Models
 
         protected Result(bool success, IEnumerable<Exception> exceptions)
         {
-            Asserts.isTrue((success && exceptions == null) || (success == false && exceptions != null));
+            Asserts.Assert.isTrue((success && exceptions == null) || (success == false && exceptions != null));
 
             this.Success = success;
 
@@ -33,7 +33,7 @@ namespace Blacksmith.Models
         {
             get
             {
-                Asserts.isFalse(this.Success);
+                Asserts.Assert.isFalse(this.Success);
                 return this.exceptions;
             }
         }
@@ -63,7 +63,7 @@ namespace Blacksmith.Models
         {
             get
             {
-                Asserts.isTrue(this.Success);
+                Asserts.Assert.isTrue(this.Success);
                 return this.value;
             }
         }

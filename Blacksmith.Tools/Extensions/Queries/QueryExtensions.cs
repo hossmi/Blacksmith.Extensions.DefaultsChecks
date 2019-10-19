@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Blacksmith.Queries;
+﻿using Blacksmith.Queries;
 using System.Linq;
 using System;
-using Blacksmith.Extensions.Strings;
 using System.Linq.Expressions;
+using Blacksmith.Tools.Extensions.Strings;
+using Blacksmith.Validations;
 
 namespace Blacksmith.Extensions.Queries
 {
@@ -21,7 +21,13 @@ namespace Blacksmith.Extensions.Queries
         {
             if (sortBy.isFilled() && sortDirection.isFilled())
             {
-                Asserts.isTrue(sortDirection.ToUpper() == "ASC" || sortDirection.ToUpper() == "DESC");
+                bool directionIsAscOrDesc;
+
+                directionIsAscOrDesc = 
+                    sortDirection.ToUpper() == "ASC" 
+                    || sortDirection.ToUpper() == "DESC";
+
+                Asserts.Assert.isTrue(directionIsAscOrDesc, $"Only ASC or DESC {nameof(sortDirection)} values are allowed.");
                 return prv_orderByField(query, sortBy, sortDirection.ToUpper() == "ASC");
             }
             else
@@ -34,7 +40,7 @@ namespace Blacksmith.Extensions.Queries
         {
             string[] props = sortField.Split('_');
             MemberExpression prop;
-            MemberExpression secondProp = null;
+            MemberExpression secondProp;
             LambdaExpression exp;
             MethodCallExpression mce;
             ParameterExpression param;
@@ -42,7 +48,7 @@ namespace Blacksmith.Extensions.Queries
 
             Type[] types;
 
-            Asserts.isTrue(props.Length > 0 && props.Length <= 2);
+            Asserts.Assert.isTrue(props.Length > 0 && props.Length <= 2, $"Only one or two chained properties are allowed");
 
             param = Expression.Parameter(typeof(T), "p");
 

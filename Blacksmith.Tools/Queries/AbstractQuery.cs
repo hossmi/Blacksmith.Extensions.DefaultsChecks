@@ -1,5 +1,5 @@
 ﻿using Blacksmith.Extensions.Queries;
-using System;
+using Blacksmith.Validations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +31,7 @@ namespace Blacksmith.Queries
             }
             set
             {
-                Asserts.isTrue(value >= 0);
+                Asserts.Assert.isTrue(value >= 0);
                 this.page = value;
 
             }
@@ -45,7 +45,7 @@ namespace Blacksmith.Queries
             }
             set
             {
-                Asserts.isTrue(1 <= value && value <= int.MaxValue);
+                Asserts.Assert.isTrue(1 <= value && value <= int.MaxValue);
                 this.pageSize = value;
             }
         }
@@ -67,7 +67,7 @@ namespace Blacksmith.Queries
 
             set
             {
-                Asserts.isNotNull(value);
+                Asserts.Assert.isNotNull(value);
                 this.sortBy = value;
             }
         }
@@ -81,7 +81,7 @@ namespace Blacksmith.Queries
 
             set
             {
-                Asserts.isNotNull(value);
+                Asserts.Assert.isNotNull(value);
                 this.sortDirection = value;
             }
         }

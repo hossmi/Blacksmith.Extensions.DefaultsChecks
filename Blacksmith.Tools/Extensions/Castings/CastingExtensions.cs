@@ -1,5 +1,5 @@
-﻿using System;
-using Blacksmith;
+﻿using Blacksmith.Validations;
+using System;
 
 namespace Blacksmith.Extensions.Castings
 {
@@ -12,7 +12,7 @@ namespace Blacksmith.Extensions.Castings
             if (item == null)
             {
                 newItem = buildNewItem();
-                Asserts.isNotNull(newItem);
+                Asserts.Assert.isNotNull(newItem);
 
                 return newItem;
             }

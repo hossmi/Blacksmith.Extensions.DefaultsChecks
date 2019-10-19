@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
+using Blacksmith.Validations;
 
 namespace Blacksmith.Queries
 {
-    public class UnionQuery<Tin, Tout> : AbstractQuery<Tin, Tout>
+    public class DefaultQuery<Tin, Tout> : AbstractOrderedQuery<Tin, Tout>
     {
         private readonly Func<Tin, Tout> mapDelegate;
 
-        public UnionQuery(IEnumerable<IQueryable<Tin>> queries, Func<Tin, Tout> mapDelegate) 
-            : base(queries.Aggregate((union, q) => union.Concat(q)), true)
+        public DefaultQuery(IOrderedQueryable<Tin> query, Func<Tin, Tout> mapDelegate) : base(query)
         {
-            Asserts.isNotNull(mapDelegate);
+            Asserts.Assert.isNotNull(mapDelegate);
 
             this.mapDelegate = mapDelegate;
         }
