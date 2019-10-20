@@ -8,10 +8,15 @@ namespace Blacksmith.Queries
 {
     public abstract class AbstractQuery<Tin, TOut> : IQuery<TOut>
     {
+        protected static Asserts assert;
+
+        static AbstractQuery()
+        {
+            assert = Asserts.Assert;
+        }
+
         private readonly IQueryable<Tin> query;
         private int page;
-        private string sortBy;
-        private string sortDirection;
         private readonly bool pageInMemory;
         private int pageSize;
 
@@ -31,7 +36,7 @@ namespace Blacksmith.Queries
             }
             set
             {
-                Asserts.Assert.isTrue(value >= 0);
+                assert.isTrue(value >= 0, $"{nameof(this.Page)} must be greater or equal than zero.");
                 this.page = value;
 
             }
@@ -45,7 +50,7 @@ namespace Blacksmith.Queries
             }
             set
             {
-                Asserts.Assert.isTrue(1 <= value && value <= int.MaxValue);
+                assert.isTrue(1 <= value && value <= int.MaxValue, $"{nameof(this.PageSize)} must be positive number.");
                 this.pageSize = value;
             }
         }
@@ -55,34 +60,6 @@ namespace Blacksmith.Queries
             get
             {
                 return this.query.Count();
-            }
-        }
-
-        public string SortBy
-        {
-            get
-            {
-                return this.sortBy;
-            }
-
-            set
-            {
-                Asserts.Assert.isNotNull(value);
-                this.sortBy = value;
-            }
-        }
-
-        public string SortDirection
-        {
-            get
-            {
-                return this.sortDirection;
-            }
-
-            set
-            {
-                Asserts.Assert.isNotNull(value);
-                this.sortDirection = value;
             }
         }
 
@@ -103,7 +80,6 @@ namespace Blacksmith.Queries
             if(this.pageInMemory)
             {
                 return this.query
-                    .setOrder(this.sortBy, this.sortDirection)
                     .AsEnumerable()                   
                     .Skip(this.page * this.pageSize)
                     .Take(this.pageSize)
@@ -114,7 +90,6 @@ namespace Blacksmith.Queries
             else
             {
                 return this.query
-                    .setOrder(this.sortBy, this.sortDirection)
                     .Skip(this.page * this.pageSize)
                     .Take(this.pageSize)
                     .AsEnumerable()

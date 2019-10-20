@@ -7,11 +7,21 @@ namespace Blacksmith.Models
 {
     public class Result
     {
+        protected static Asserts assert;
+
+        static Result()
+        {
+            assert = Asserts.Assert;
+        }
+
         private readonly IReadOnlyList<Exception> exceptions;
 
         protected Result(bool success, IEnumerable<Exception> exceptions)
         {
-            Asserts.Assert.isTrue((success && exceptions == null) || (success == false && exceptions != null));
+            if (success)
+                assert.isNull(exceptions);
+            else
+                assert.isNotNull(exceptions);
 
             this.Success = success;
 
@@ -33,7 +43,7 @@ namespace Blacksmith.Models
         {
             get
             {
-                Asserts.Assert.isFalse(this.Success);
+                assert.isFalse(this.Success, $"Cannot request {nameof(this.Exceptions)} if {nameof(this.Success)} is true.");
                 return this.exceptions;
             }
         }
@@ -63,7 +73,7 @@ namespace Blacksmith.Models
         {
             get
             {
-                Asserts.Assert.isTrue(this.Success);
+                assert.isTrue(this.Success, $"Cannot request {nameof(this.Value)} if {nameof(this.Success)} is false.");
                 return this.value;
             }
         }
