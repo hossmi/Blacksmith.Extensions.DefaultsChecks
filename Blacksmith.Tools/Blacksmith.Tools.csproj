@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.1.2</Version>
+    <Version>1.6.0</Version>
     <SignAssembly>false</SignAssembly>
     <Description>Cross-cutting tools</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
+    <AssemblyVersion>1.6.0.0</AssemblyVersion>
+    <FileVersion>1.6.0.0</FileVersion>
     <PackageProjectUrl>https://github.com/hossmi/Blacksmith.Tools</PackageProjectUrl>
     <RepositoryUrl>https://github.com/hossmi/Blacksmith.Tools</RepositoryUrl>
     <PackageTags>tools</PackageTags>
