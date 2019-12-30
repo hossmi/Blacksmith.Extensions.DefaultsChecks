@@ -1,34 +1,27 @@
-﻿using Blacksmith.Validations;
+﻿using Blacksmith.Tools;
+using Blacksmith.Validations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Blacksmith.Models
 {
-    public class Result
+    public class Result : Blacksmith.Validations.AbstractDomain
     {
-        protected static Asserts assert;
-
-        static Result()
-        {
-            assert = Asserts.Assert;
-        }
-
         private readonly IReadOnlyList<Exception> exceptions;
 
-        protected Result(bool success, IEnumerable<Exception> exceptions)
+        protected Result(bool success, IEnumerable<Exception> exceptions) : base()
         {
             if (success)
-                assert.isNull(exceptions);
+                this.assert.isNull(exceptions);
             else
-                assert.isNotNull(exceptions);
+                this.assert.isNotNull(exceptions);
 
             this.Success = success;
 
-            if(success == false)
-                this.exceptions = exceptions
-                    .ToList()
-                    .AsReadOnly();
+            this.Exceptions = (exceptions ?? Enumerable.Empty<Exception>())
+                .ToList()
+                .AsReadOnly();
         }
 
         public Result() : this(true, null) { }
@@ -39,14 +32,7 @@ namespace Blacksmith.Models
 
         public bool Success { get; }
 
-        public IReadOnlyList<Exception> Exceptions
-        {
-            get
-            {
-                assert.isFalse(this.Success, $"Cannot request {nameof(this.Exceptions)} if {nameof(this.Success)} is true.");
-                return this.exceptions;
-            }
-        }
+        public IReadOnlyList<Exception> Exceptions { get; }
 
         public static implicit operator Result(Exception exception)
         {
@@ -73,7 +59,7 @@ namespace Blacksmith.Models
         {
             get
             {
-                assert.isTrue(this.Success, $"Cannot request {nameof(this.Value)} if {nameof(this.Success)} is false.");
+                base.isTrue<ValueRequestOnUnsuccessResultException>(this.Success);
                 return this.value;
             }
         }

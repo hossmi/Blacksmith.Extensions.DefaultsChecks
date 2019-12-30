@@ -24,7 +24,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Blacksmith.Validations" Version="1.2.3" />
+    <PackageReference Include="Blacksmith.Validations" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\Strings\" />
   </ItemGroup>
 
 </Project>
