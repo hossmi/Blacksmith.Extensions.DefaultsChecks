@@ -1,2 +1,2 @@
 # Blacksmith.Tools
-Cross cutting tools for .Net projects
+Null reference and empty string check extension methods
