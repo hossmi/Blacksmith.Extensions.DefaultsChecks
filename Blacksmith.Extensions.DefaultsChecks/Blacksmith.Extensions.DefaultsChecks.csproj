@@ -3,16 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.6.0</Version>
+    <Version>1.0.0</Version>
     <SignAssembly>false</SignAssembly>
-    <Description>Cross-cutting tools</Description>
+    <Description>Null and empty string check extension methods</Description>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <AssemblyVersion>1.6.0.0</AssemblyVersion>
-    <FileVersion>1.6.0.0</FileVersion>
-    <PackageProjectUrl>https://github.com/hossmi/Blacksmith.Tools</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/hossmi/Blacksmith.Tools</RepositoryUrl>
-    <PackageTags>tools</PackageTags>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <PackageProjectUrl>https://github.com/hossmi/Blacksmith.Extensions.DefaultsChecks</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/hossmi/Blacksmith.Extensions.DefaultsChecks</RepositoryUrl>
+    <PackageTags>tools null checks</PackageTags>
+    <Authors>hossmi</Authors>
+    <Company>hossmi</Company>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -22,9 +24,5 @@
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Blacksmith.Validations" Version="1.2.3" />
-  </ItemGroup>
 
 </Project>
