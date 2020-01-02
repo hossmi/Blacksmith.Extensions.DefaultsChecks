@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Blacksmith.Tools
+namespace Blacksmith.Exceptions
 {
     [Serializable]
     public class NullResultFromDelegateMethodException : ArgumentNullException

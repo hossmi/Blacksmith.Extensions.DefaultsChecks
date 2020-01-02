@@ -1,7 +1,7 @@
-﻿using Blacksmith.Tools;
+﻿using Blacksmith.Exceptions;
 using System;
 
-namespace Blacksmith.Extensions.Castings
+namespace Blacksmith.Extensions.DefaultsChecks
 {
     public static class CastingExtensions
     {
